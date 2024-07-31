@@ -22,7 +22,7 @@ const schema = new Schema({
     type: String,
     required: [true, '商品分類必填'],
     enum: {
-      values: ['衣服', '手機', '遊戲', '食品'],
+      values: ['寫真', '點心', '玩具', '飾品', '服裝'],
       message: '商品分類錯誤'
     }
   },
