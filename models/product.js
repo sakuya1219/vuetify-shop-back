@@ -3,32 +3,32 @@ import { Schema, model } from 'mongoose'
 const schema = new Schema({
   name: {
     type: String,
-    required: [true, '商品名稱必填']
+    required: [true, '貓咪名稱必填']
   },
-  price: {
+  age: {
     type: Number,
-    required: [true, '商品價格必填'],
-    min: [0, '商品價格不能小於 0']
+    required: [true, '貓咪年齡必填'],
+    min: [0, '貓咪年齡不能小於 0']
   },
   image: {
     type: String,
-    required: [true, '商品圖片必填']
+    required: [true, '貓咪圖片必填']
   },
   description: {
     type: String,
-    required: [true, '商品說明必填']
+    required: [true, '貓咪說明必填']
   },
-  category: {
+  breed: {
     type: String,
-    required: [true, '商品分類必填'],
+    required: [true, '貓咪品種必填'],
     enum: {
-      values: ['衣服', '手機', '遊戲', '食品'],
-      message: '商品分類錯誤'
+      values: ['品種1', '品種2', '品種3', '品種4'],
+      message: '貓咪品種錯誤'
     }
   },
-  sell: {
+  adoptable: {
     type: Boolean,
-    required: [true, '商品上架狀態必填']
+    required: [true, '貓咪被預約狀態必填']
   }
 }, {
   timestamps: true,
