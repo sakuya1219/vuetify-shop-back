@@ -22,13 +22,19 @@ const schema = new Schema({
     type: String,
     required: [true, '貓咪品種必填'],
     enum: {
-      values: ['品種1', '品種2', '品種3', '品種4'],
+      values: ['蠢貓', '呆貓', '辣貓', '美貓', '帥貓', '酷貓', '可愛貓', '仙女貓', '寶寶貓'],
       message: '貓咪品種錯誤'
     }
   },
   adoptable: {
     type: Boolean,
     required: [true, '貓咪被預約狀態必填']
+  },
+  status: {
+    type: String,
+    enum: ['on-duty', 'off-duty'], // 添加状态字段
+    default: 'off-duty',
+    required: [true, '貓咪狀態必填']
   }
 }, {
   timestamps: true,

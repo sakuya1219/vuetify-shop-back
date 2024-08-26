@@ -36,8 +36,21 @@ export const getAll = async (req, res) => {
     const page = req.query.page * 1 || 1
     const regex = new RegExp(req.query.search || '', 'i')
 
+    // 增加状态筛选功能
+    const filter = {}
+    if (req.query.status === 'adoptable') {
+      filter.adoptable = true
+    } else if (req.query.status === 'notAdoptable') {
+      filter.adoptable = false
+    }
+
     const data = await Product.find({
-      $or: [{ name: regex }, { description: regex }]
+      $and: [
+        {
+          $or: [{ name: regex }, { description: regex }]
+        },
+        filter
+      ]
     })
       .sort({ [sortBy]: sortOrder })
       .skip((page - 1) * itemsPerPage)
